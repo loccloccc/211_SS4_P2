@@ -1,0 +1,14 @@
+So sánh POST và PUT
+Tiêu chí	        POST	                    PUT
+Mục đích	        Tạo tài nguyên mới	        Cập nhật hoặc thay thế tài nguyên đã tồn tại
+Idempotent	        Không	                    Có
+Khi nào dùng	    Khi server tự tạo ID	    Khi biết trước ID tài nguyên
+
+Idempotent nghĩa là gọi nhiều lần vẫn cho cùng một kết quả.
+Ví dụ:
+
+POST /orders gọi 2 lần → có thể tạo 2 đơn hàng khác nhau ⇒ không idempotent
+PUT /orders/1 gọi nhiều lần → vẫn cập nhật đơn hàng id=1 ⇒ idempotent
+Ai đúng?
+
+Đồng nghiệp B đúng vì bài toán đang tạo mới đơn hàng và hệ thống tự sinh orderId.
